@@ -11,7 +11,9 @@ RewriteEngine on
 
 
 #Domain: localhost:8888
+
 RewriteRule . - [E=REWRITEBASE:/licpresta/]
+
 RewriteRule ^api$ api/ [L]
 
 RewriteRule ^api/(.*)$ %{ENV:REWRITEBASE}webservice/dispatcher.php?url=$1 [QSA,L]
@@ -49,6 +51,10 @@ AddType application/x-font-woff .woff
 </IfModule>
 
 #If rewrite mod isn't enabled
+<<<<<<< HEAD
 ErrorDocument 404 /licpresta/index.php?controller=404
+=======
+ErrorDocument 404 /prestashop/index.php?controller=404
+>>>>>>> af2f8f8520f2455bde3b4ab4a1340b502529084c
 
 # ~~end~~ Do not remove this comment, Prestashop will keep automatically the code outside this comment when .htaccess will be generated again
