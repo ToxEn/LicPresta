@@ -65,6 +65,11 @@ class advancedSearchController extends FrontController
             'homeSize' => Image::getSize(ImageType::getFormatedName('home'))));
     }
 
+      $this->context->smarty->assign(array(
+          'resultSize' => $resultSize,
+          'resultColor' => $resultColor,
+          'resultIntSize' => $resultIntSize));
+
     $this->context->smarty->assign(array('add_prod_display' => Configuration::get('PS_ATTRIBUTE_CATEGORY_DISPLAY'), 'comparator_max_item' => Configuration::get('PS_COMPARATOR_MAX_ITEM')));
 
     $this->setTemplate(_PS_THEME_DIR_.'letemplate.tpl');
