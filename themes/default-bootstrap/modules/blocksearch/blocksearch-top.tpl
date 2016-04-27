@@ -32,7 +32,9 @@
 		<button type="submit" name="submit_search" class="btn btn-default button-search">
 			<span>{l s='Search' mod='blocksearch'}</span>
 		</button>
-		<a href="{$link->getPageLink('advancedSearch')}">{l s="Recherche avancée" mod="blocksearch"}</a>
+		<a class="btn button-search btn-primary blue" href="{$link->getPageLink('advancedSearch')}">
+		</a>
 	</form>
+
 </div>
 <!-- /Block search module TOP -->

@@ -1,0 +1,57 @@
+#advancedsearch #formulaire{
+    margin: 0 -10px;
+    letter-spacing: -0.31em;
+}
+
+#advancedsearch .form-group {
+    padding: 0 10px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+#advancedsearch .form-group#search {
+    width: 50%;
+}
+
+#advancedsearch .form-group.taille {
+    width: 25%;
+}
+
+#advancedsearch .form-group label,
+#advancedsearch .form-group input,
+#advancedsearch .form-group select,
+#advancedsearch .form-group option,
+#advancedsearch .form-group .selector {
+    letter-spacing: normal;
+}
+
+#advancedsearch #center_column {
+    padding: 0;
+}
+
+#advancedsearch .form-group select {
+    display: block;
+}
+
+#advancedsearch .form-group.submit {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#advancedsearch .form-group.submit button {
+    background: none;
+    border: none;
+    outline: 0;
+}
+
+#advancedsearch .form-group.submit button>span {
+    background: #6ad4ff;
+    padding: 10px 20px;
+    transition: opacity 0.5s;
+    border: 1px solid lightgrey;
+}
+
+#advancedsearch .form-group.submit button:hover >span {
+    opacity: 0.8;
+}

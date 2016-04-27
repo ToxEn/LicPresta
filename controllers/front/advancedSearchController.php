@@ -7,6 +7,7 @@ class advancedSearchController extends FrontController
   {
     parent::initContent();
     $this->addCSS(_THEME_CSS_DIR_.'product_list.css');
+      $this->addCSS(_THEME_CSS_DIR_.'mycss.css');
 
     $querySize = "SELECT * FROM "._DB_PREFIX_."attribute_lang WHERE `id_attribute` < 5";
     $resultSize = Db::getInstance()->ExecuteS($querySize);
@@ -17,23 +18,13 @@ class advancedSearchController extends FrontController
     $queryIntSize = "SELECT * FROM "._DB_PREFIX_."attribute_lang WHERE `id_attribute` > 17";
     $resultIntSize = Db::getInstance()->ExecuteS($queryIntSize);
 
-    // $text = Tools::getValue('rndText');
-    // $priceMin = Tools::getValue('priceMin');
-    // $priceMax = Tools::getValue('priceMax');
-    // $size = Tools::getValue('size');
-    // $color = Tools::getValue('color');
-    // $stock = Tools::getValue('stock');
-    //
-    // $this->context->smarty->assign(array(
-    //   'rndText'=>$text,
-    //   'priceMin'=>$priceMin,
-    //   'priceMax'=>$priceMax,
-    //   'size'=>$size,
-    //   'color'=>$color,
-    //   'stock'=>$stock,
-    // ));
-
     $product_per_page = isset($this->context->cookie->nb_item_per_page) ? (int)$this->context->cookie->nb_item_per_page : Configuration::get('PS_PRODUCTS_PER_PAGE');
+
+      $this->context->smarty->assign(array(
+          'nbProducts' => -1,
+          'resultSize' => $resultSize,
+          'resultColor' => $resultColor,
+          'resultIntSize' => $resultIntSize));
 
     if (($query = Tools::getValue('search_query', Tools::getValue('ref'))) && !is_array($query)) {
         $this->productSort();
@@ -64,11 +55,6 @@ class advancedSearchController extends FrontController
             'search_query' => $original_query,
             'homeSize' => Image::getSize(ImageType::getFormatedName('home'))));
     }
-
-      $this->context->smarty->assign(array(
-          'resultSize' => $resultSize,
-          'resultColor' => $resultColor,
-          'resultIntSize' => $resultIntSize));
 
     $this->context->smarty->assign(array('add_prod_display' => Configuration::get('PS_ATTRIBUTE_CATEGORY_DISPLAY'), 'comparator_max_item' => Configuration::get('PS_COMPARATOR_MAX_ITEM')));
 

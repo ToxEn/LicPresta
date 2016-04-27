@@ -8568,4 +8568,8 @@ div.star.star_hover:after {
 .pointer-box {
   cursor: pointer; }
 
+.blue {
+  background-color: #2BA8A8!important;
+}
+
 /*# sourceMappingURL=global.css.map */

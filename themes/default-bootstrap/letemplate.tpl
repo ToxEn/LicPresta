@@ -3,31 +3,51 @@
   <title>Advanced search</title>
 </head>
 <body>
-<form name="toto" action="{$link->getPageLink('advancedSearch')}">
-  <input type="text" id="search_query" name="search_query" placeholder="Random text"></input>
-  <input type="text" id="priceMin" name="priceMin" placeholder="Minimum price"></input>
-  <input type="text" id="priceMax" name="priceMax" placeholder="Maximum price"></input>
-  <label>Size : </label>
-  <select name="size">
-    <option value='0'></option>
-    {foreach from=$resultSize item=size}
-      <option value='{$size.name}'>{$size.name}</option>
-    {/foreach}
-  </select>
-  <label>Color : </label>
-  <select name="color">
+<h2>Recherche avancée</h2>
+<form name="toto" id="formulaire" method="post" action="{$link->getPageLink('advancedsearch')}">
+  <p class="form-group" id="search">
+    <label for="recherche">{l s="Votre recherche"}</label>
+    <input type="text" id="search_query" name="search_query" placeholder="Name"/>
+  </p>
+  <p class="form-group taille">
+    <label for="priceMin">{l s="Prix minimum"}</label>
+    <input type="text" id="priceMin" name="priceMin" placeholder="Minimum price"/>
+  </p>
+  <p class="form-group taille">
+    <label for="priceMax">{l s="Prix minimum"}</label>
+    <input type="text" id="priceMax" name="priceMax" placeholder="Maximum price"/>
+  </p>
+  <p class="form-group">
+    <label for="size">{l s="Taille"}</label>
+    <select name="size" id="size" style="width: 90px;" class="form-control">
       <option value='0'></option>
-    {foreach from=$resultColor item=color}
-      <option value='{$color.name}'>{$color.name}</option>
-    {/foreach}
-  </select>
-  <input type= "radio" name="stock" value="in stock">In stock</input>
-  <input type= "radio" name="stock" value="rupture">Rupture</input>
+      {foreach from=$resultSize item=size}
+        <option value='{$size.name}'>{$size.name}</option>
+      {/foreach}
+    </select>
+  </p>
+  <p class="form-group">
+    <label for="color">{l s="Couleur"}</label>
+    <select name="color" id="color" style="width: 90px;" class="form-control">
+      <option value='0'></option>
+      {foreach from=$resultColor item=color}
+        <option value='{$color.name}'>{$color.name}</option>
+      {/foreach}
+    </select>
+  </p>
+  {*<input type= "radio" name="stock" value="in stock">In stock</input>
+  <input type= "radio" name="stock" value="rupture">Rupture</input>*}
 
   <button type="submit" class="btn btn-default button-search">Submit</button>
 </form>
 <br>
 
+{if $nbProducts>-1}
+  <h3>Résultats</h3>
+  {if $nbProducts==0}
+    <p>Aucun résultat trouvé</p>
+  {/if}
+{/if}
 <!-- {if $rndText or $priceMin or $priceMax or $size or $color or $stock}
   <p>Text : {$rndText}</p>
   <p>Minimum price : {$priceMin}</p>

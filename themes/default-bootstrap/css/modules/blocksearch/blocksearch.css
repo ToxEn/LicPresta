@@ -64,3 +64,7 @@ form#searchbox {
       margin-right: 0; }
 
 /*# sourceMappingURL=blocksearch.css.map */
+
+#search_block_top #searchbox button {
+  right: 50px;
+}
